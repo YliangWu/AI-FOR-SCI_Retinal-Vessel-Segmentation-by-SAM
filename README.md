@@ -1,7 +1,7 @@
 # Retinal-Vessel-Segmentation-by-SAM
 
 here we give two different models code.
-all the checkpoint files can be download [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
+All the checkpoint files can be download [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
 
 ![](./sam-hq/1.png)
 
@@ -89,10 +89,10 @@ the image will also output to ```./output/date/```
 
 # LearnablePromptSAM
 Try to use the SAM-ViT as the backbone to create the visual prompt tuning model for semantic segmentation. 
-download all checkpoint [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
+Download  checkpoints [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
 
 ## 1. download checkpoint and dataset
-put chasedb1 dataset to:
+Put chasedb1 dataset to:
 ```
 dataset
 | __train
