@@ -1,0 +1,14 @@
+CHASEDB1中包含原数据集training、增广数据集Medaugment、
+在增广数据集上划分为训练集、验证集和测试集的splited
+
+DRIVE文件中的training模块选取若干数据作为1、2、5、10张作为小样本训练
+
+augmention.py用于对CHASEDB1进行数据增广
+augmen_samll.py用于对DRIVE进行数据增广,记得改参数
+extract.py用于从DRIVE中随机抽取1、2、5、10张图片和对应掩码作为训练样本，记得改参数
+divide_data.py用于将CHASEDB1中的img、mask、valid_mask进行分类
+split.py用于将增广后的CHASEDB1数据集划分为训练集、验证集、测试集
+transfrom.py用于将DRIVE中的图片格式统一为jpg
+
+说明：medaugment、splited中对应的图片和掩膜名字一致
+transformed_training中同上
