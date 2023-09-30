@@ -1,13 +1,32 @@
-# Retinal-Vessel-Segmentation-by-SAM
 
-here we give two different models code.
-All the checkpoint files can be download [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
+
+# Retinal-Vessel-Segmentation-by-SAM
+Here's the code for the work we did in the AI-FOR-SCIENCE competition.
+
+In order to explore the performance of the segmentation-based large model SAM on the downstream task-fundus vessel segmentation, we successively tried three models。
+Here we provide the relevant code for three different models:
+```
+|sam_hq
+|BVSAM(original sam on Blood Vessel segmentation)
+|learnable_prompt_sam
+```
+
+For more details, check out our technical report.
+	
+#preparation
+
+All the checkpoint files can be downloaded  [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
 
 ![](./sam-hq/1.png)
 
 
-#sam-hq
+CHASEDB1 dataset can be downloaded  [here](https://drive.google.com/drive/folders/1bubcizfo9shiJByt97-yVsO60MDm37yG?usp=drive_link).
 
+## environment
+run ```pip install -e .``` 
+
+
+# 1.sam-hq
 We organize the training folder as follows.
 
 ```
@@ -23,12 +42,8 @@ We organize the training folder as follows.
 |    |____segment_anything_training
 |    |____output
 ```
-## environment
-run ```pip install -e .``` 
 
-## 1. Data Preparation
-
-CHASEDB1 data set can be downloaded from [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link).
+## a. Data Preparation
 
 we have done Augment on the original CHASEDB1 dataset
 
@@ -48,8 +63,7 @@ CHASEDB1
 
 ```
 
-## 2. Init Checkpoint
-Init checkpoint can be downloaded from [our google disk](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
+## b. Init Checkpoint
 ### Expected checkpoint
 
 ```
@@ -59,17 +73,18 @@ pretrained_checkpoint
 |____sam_decoder.pth 
 ```
 
-```sam_vit_l_maskdecoder.pth``` and``` sam_vit_l_0b3195.pth``` are processed from ```sam_vit_l.pth```
+where 
+```sam_vit_l_maskdecoder.pth```  is extracted from  ``` sam_vit_l_0b3195.pth```  ```sam_vit_l.pth```
 
-```sam_decoder.pth```  is the final model we train.
+```sam_decoder.pth```  is the final model we trained.
 
 
-## 3. Training
+## c. Training
 run ```python train.py``` to train 
 
 the result will be output to ```./output/date/```
 
-## 4. Evaluation
+## d. Evaluation
 To evaluate ,run ```python predict.py```
 
 the image will also output to ```./output/date/```
@@ -77,22 +92,16 @@ the image will also output to ```./output/date/```
 
 ## demo result
 ![1](./sam-hq/output/20230928-2049/0_0_0.png)
-![1](./sam-hq/output/20230928-2049/0_1_0.png)
 
 
 
 
-
-
-
-
-
-# LearnablePromptSAM
+# 2.LearnablePromptSAM
 Try to use the SAM-ViT as the backbone to create the visual prompt tuning model for semantic segmentation. 
-Download  checkpoints [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
+download all checkpoint [here](https://drive.google.com/drive/folders/1-kzNpA_vdlIzaGZEURr5DJvVMDCugaQc?usp=drive_link)
 
-## 1. download checkpoint and dataset
-Put chasedb1 dataset to:
+## a. download checkpoint and dataset
+put chasedb1 dataset to:
 ```
 dataset
 | __train
@@ -108,16 +117,23 @@ dataset
 
 put checkpoint to ```./weights/sam_vit_b_01ec64.pth```
 	
-## 2.train
+## b.train
 
   ```
   python imporved_sam.py 
   ```
 
-## 3.predict
+## c.predict
 
 download pretrained checkpoint and put to
 ```"./weights/sam_vit_b_prompt_2023_0924_2155.pth```
+To facilitate the prediction, we designed a gui.
+You can run ```gui.py``` in pycharm
 
- run ```gui.py``` in pycharm
+
+## d.demo result
+![123](./LearnablePromptSAM/demo/Image_01L.jpg)
+![1](./LearnablePromptSAM/demo/output_image.jpg)
+
+
 
